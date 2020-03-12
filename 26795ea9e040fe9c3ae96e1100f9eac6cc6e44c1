@@ -1,0 +1,8 @@
+Verified+1: ORAN Jobbuilder <releng+oran-jobbuilder@linuxfoundation.org>
+Code-Review+1: Manoop Talasila <talasila@research.att.com>
+Code-Review+2: Guy Jacobson <gj2418@att.com>
+Submitted-by: Matti Hiltunen <hiltunen@att.com>
+Submitted-at: Thu, 12 Mar 2020 16:48:21 +0000
+Reviewed-on: https://gerrit.o-ran-sc.org/r/c/ric-app/qp/+/2656
+Project: ric-app/qp
+Branch: refs/heads/master
