@@ -1,0 +1,4 @@
+# static route table to direct messages sent by mock QP xApp
+newrt|start
+rte|30002|service-ricxapp-trafficxapp-rmr.ricxapp.svc.cluster.local:4560
+newrt|end
