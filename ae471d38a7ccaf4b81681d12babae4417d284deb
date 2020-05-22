@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c431be4d_366ce769",
+        "filename": "tests/fixtures/local.rt",
+        "patchSetId": 7
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1000049
+      },
+      "writtenOn": "2020-05-22T16:31:49Z",
+      "side": 1,
+      "message": "Should be:\nrte|30002|service-ricxapp-trafficxapp-rmr.ricxapp.svc.cluster.local:4560",
+      "range": {
+        "startLine": 3,
+        "startChar": 38,
+        "endLine": 3,
+        "endChar": 41
+      },
+      "revId": "ae471d38a7ccaf4b81681d12babae4417d284deb",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53",
+      "unresolved": true
+    }
+  ]
+}
