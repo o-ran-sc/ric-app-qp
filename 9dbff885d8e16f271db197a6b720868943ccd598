@@ -22,6 +22,30 @@
       "revId": "9dbff885d8e16f271db197a6b720868943ccd598",
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67737f11_6de782fe",
+        "filename": "xapp-descriptor/config.json",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000049
+      },
+      "writtenOn": "2020-06-02T18:34:34Z",
+      "side": 1,
+      "message": "It\u0027s for receiving route updates from routing manager.",
+      "parentUuid": "c1276700_cf226edf",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 5
+      },
+      "revId": "9dbff885d8e16f271db197a6b720868943ccd598",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53",
+      "unresolved": true
     }
   ]
 }
