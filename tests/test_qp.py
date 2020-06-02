@@ -52,7 +52,7 @@ def test_rmr_flow(monkeypatch, qpd_to_qp, qp_prediction):
 
     expected_result = {}
 
-    # define a mock traffic steering xapp
+    # define a mock traffic steering xapp that listens on 4563
     def mock_ts_default_handler(self, summary, sbuf):
         pass
 

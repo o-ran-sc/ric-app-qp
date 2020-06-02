@@ -1,6 +1,6 @@
 # do NOT use localhost, seems unresolved on jenkins VMs
 newrt|start
-mse| 30001 | -1 | 127.0.0.1:4562 # prediction request from QPD to QP
-mse| 60001 | -1 | 127.0.0.1:4562 # other message from QPD to QP
+mse| 30001 | -1 | 127.0.0.1:4560 # prediction request from QPD to QP
+mse| 60001 | -1 | 127.0.0.1:4560 # other message from QPD to QP
 mse| 30002 | -1 | 127.0.0.1:4563 # prediction response from QP to TS
 newrt|end
