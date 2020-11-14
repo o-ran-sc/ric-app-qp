@@ -17,7 +17,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="qp",
-    version="0.0.2",
+    version="0.0.3",
     packages=find_packages(exclude=["tests.*", "tests"]),
     description="Quality-of-Service Predictor Xapp for Traffic Steering",
     url="https://gerrit.o-ran-sc.org/r/admin/repos/ric-app/qp",
