@@ -14,7 +14,7 @@
 #   limitations under the License.
 # ==================================================================================
 """
-mock qp module
+qp module main -- first version using ML predictor
 
 RMR Messages:
  #define TS_QOE_PRED_REQ 30001
@@ -26,6 +26,7 @@ sends out type 30002 which should be routed to TS.
 
 
 import os
+from predict import qpprediction
 from mdclogpy import Logger
 from ricxappframe.xapp_frame import RMRXapp, rmr
 
@@ -59,11 +60,9 @@ def qp_predict_handler(self, summary, sbuf):
     self.predict_requests += 1
     # we don't use rts here; free this
     self.rmr_free(sbuf)
-    # send a mock message
-    mock_msg = '{ "12345" : { "310-680-200-555001" : [ 2000000 , 1200000 ], '\
-               '              "310-680-200-555002" : [  800000 , 400000  ], '\
-               '              "310-680-200-555003" : [  800000 , 400000  ] } }'
-    success = self.rmr_send(mock_msg.encode(), 30002)
+    # make a prediction
+    pred_msg = qpprediction(summary)
+    success = self.rmr_send(pred_msg.encode(), 30002)
     if success:
         logger.debug("predict handler: sent message successfully")
     else:
