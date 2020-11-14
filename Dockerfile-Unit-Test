@@ -15,11 +15,15 @@
 # ==================================================================================
 FROM python:3.8-alpine
 
+# Need to add Alpine edge to get the ML libraries like scikit-learn
+RUN echo "http://dl-8.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories
+
 # sdl uses hiredis which needs gcc
-RUN apk update && apk add gcc musl-dev
+RUN apk update && apk add gcc musl-dev py3-scikit-learn py3-numpy
 
 # copy rmr libraries from builder image in lieu of an Alpine package
 COPY --from=nexus3.o-ran-sc.org:10002/o-ran-sc/bldr-alpine3-rmr:4.0.5 /usr/local/lib64/librmr* /usr/local/lib64/
+
 
 # Upgrade pip, install tox
 RUN pip install --upgrade pip && pip install tox
@@ -32,4 +36,4 @@ RUN pip install /tmp
 
 # Run the unit tests
 WORKDIR /tmp
-RUN tox -e code,flake8
+RUN PYTHONPATH=/tmp/qp:/usr/lib/python3.8/site-packages/:$PYTHONPATH tox -e code,flake8
