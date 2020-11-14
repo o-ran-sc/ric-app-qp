@@ -25,8 +25,11 @@ ENV LD_LIBRARY_PATH /usr/local/lib/:/usr/local/lib64
 COPY tests/fixtures/local.rt /opt/route/local.rt
 ENV RMR_SEED_RT /opt/route/local.rt
 
+# Need to add Alpine edge to get the ML libraries like scikit-learn
+RUN echo "http://dl-8.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories
+
 # sdl needs gcc
-RUN apk update && apk add gcc musl-dev
+RUN apk update && apk add gcc musl-dev py3-scikit-learn
 
 # Install
 COPY setup.py /tmp
