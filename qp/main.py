@@ -24,7 +24,7 @@ sends out type 30002 which should be routed to TS.
 
 """
 
-
+import json
 import os
 from mdclogpy import Logger
 from ricxappframe.xapp_frame import RMRXapp, rmr
@@ -56,14 +56,25 @@ def qp_predict_handler(self, summary, sbuf):
     Function that processes messages for type 30001
     """
     logger.debug("predict handler received message type {}".format(summary[rmr.RMR_MS_MSG_TYPE]))
+    logger.debug("adding somethign")
+    logger.debug("message is " + summary[rmr.RMR_MS_PAYLOAD].decode())
+    pred_req_msg = json.loads(summary[rmr.RMR_MS_PAYLOAD].decode())
+    all_cells = {}
+    ind = 0
+    for ncell in pred_req_msg["CellMeasurements"]:
+        if (ind == 0):
+            all_cells[ncell["CellID"]] = [50000, 20000]
+        else:
+            all_cells[ncell["CellID"]] = [20000, 10000]
+        ind += 1
+
+    pred_msg = {}
+    pred_msg[pred_req_msg["PredictionUE"]] = all_cells    
     self.predict_requests += 1
     # we don't use rts here; free this
     self.rmr_free(sbuf)
-    # send a mock message
-    mock_msg = '{ "12345" : { "310-680-200-555001" : [ 2000000 , 1200000 ], '\
-               '              "310-680-200-555002" : [  800000 , 400000  ], '\
-               '              "310-680-200-555003" : [  800000 , 400000  ] } }'
-    success = self.rmr_send(mock_msg.encode(), 30002)
+    # send a mock message based on input
+    success = self.rmr_send(json.dumps(pred_msg).encode(), 30002)
     if success:
         logger.debug("predict handler: sent message successfully")
     else:
