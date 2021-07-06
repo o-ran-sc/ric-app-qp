@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de27d276_f8b41f5a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000971
+      },
+      "writtenOn": "2021-07-06T06:45:13Z",
+      "side": 1,
+      "message": "Released first version of QP with ML Prediction code.\nKindly review and merge.\n",
+      "revId": "a1cb1abac5f5979f507b6760f0862c38c3ba2347",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    }
+  ]
+}
