@@ -1,5 +1,6 @@
 # ==================================================================================
 #       Copyright (c) 2020 AT&T Intellectual Property.
+#       Copyright (c) 2021 HCL Technologies Limited.
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");
 #   you may not use this file except in compliance with the License.
@@ -20,72 +21,9 @@ import pytest
 
 @pytest.fixture
 def qp_prediction():
-    return {
-        "12345": {
-            "310-680-200-555001": [50000, 20000],
-            "310-680-200-555003": [20000, 10000],
-            "310-680-200-555002": [20000, 10000]
-        }
-    }
+    return {"Car-1": {"c6/B2": [12650, 12721], "c6/N77": [12663, 12739], "c1/B13": [12576, 12655], "c7/B13": [12649, 12697], "c5/B13": [12592, 12688]}}
 
 
 @pytest.fixture
-def qpd_to_qp():
-    return {
-        "PredictionUE": "12345",
-        "UEMeasurements": {
-            "ServingCellID": "310-680-200-555002",
-            "MeasTimestampUEPDCPBytes": "2020-03-18 02:23:18.220",
-            "MeasPeriodUEPDCPBytes": 20,
-            "UEPDCPBytesDL": 250000,
-            "UEPDCPBytesUL": 100000,
-            "MeasTimestampUEPRBUsage": "2020-03-18 02:23:18.220",
-            "MeasPeriodUEPRBUsage": 20,
-            "UEPRBUsageDL": 10,
-            "UEPRBUsageUL": 30,
-        },
-        "CellMeasurements": [
-            {
-                "CellID": "310-680-200-555001",
-                "MeasTimestampPDCPBytes": "2020-03-18 02:23:18.220",
-                "MeasPeriodPDCPBytes": 20,
-                "PDCPBytesDL": 2000000,
-                "PDCPBytesUL": 1200000,
-                "MeasTimestampAvailPRB": "2020-03-18 02:23:18.220",
-                "MeasPeriodAvailPRB": 20,
-                "AvailPRBDL": 30,
-                "AvailPRBUL": 50,
-                "MeasTimestampRF": "2020-03-18 02:23:18.210",
-                "MeasPeriodRF": 40,
-                "RFMeasurements": {"RSRP": -90, "RSRQ": -13, "RSSINR": -2.5},
-            },
-            {
-                "CellID": "310-680-200-555003",
-                "MeasTimestampPDCPBytes": "2020-03-18 02:23:18.220",
-                "MeasPeriodPDCPBytes": 20,
-                "PDCPBytesDL": 1900000,
-                "PDCPBytesUL": 1000000,
-                "MeasTimestampAvailPRB": "2020-03-18 02:23:18.220",
-                "MeasPeriodAvailPRB": 20,
-                "AvailPRBDL": 60,
-                "AvailPRBUL": 80,
-                "MeasTimestampRF": "2020-03-18 02:23:18.210",
-                "MeasPeriodRF": 40,
-                "RFMeasurements": {"RSRP": -140, "RSRQ": -17, "RSSINR": -6},
-            },
-            {
-                "CellID": "310-680-200-555002",
-                "MeasTimestampPDCPBytes": "2020-03-18 02:23:18.220",
-                "MeasPeriodPDCPBytes": 20,
-                "PDCPBytesDL": 800000,
-                "PDCPBytesUL": 400000,
-                "MeasTimestampAvailPRB": "2020-03-18 02:23:18.220",
-                "MeasPeriodAvailPRB": 20,
-                "AvailPRBDL": 30,
-                "AvailPRBUL": 45,
-                "MeasTimestampRF": "2020-03-18 02:23:18.210",
-                "MeasPeriodRF": 40,
-                "RFMeasurements": {"RSRP": -115, "RSRQ": -16, "RSSINR": -5},
-            },
-        ],
-    }
+def ts_to_qp():
+    return '{"UEPredictionSet": ["Car-1"]}'
