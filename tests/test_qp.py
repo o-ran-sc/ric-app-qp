@@ -19,7 +19,7 @@ from contextlib import suppress
 from qp import main
 from ricxappframe.xapp_frame import Xapp, RMRXapp
 
-mock_qpd_xapp = None
+mock_qp_xapp = None
 mock_ts_xapp = None
 
 """
@@ -43,7 +43,11 @@ def test_init_xapp(monkeypatch):
     main.start(thread=True)
 
 
-def test_rmr_flow(monkeypatch, qpd_to_qp, qp_prediction):
+def test_predict(monkeypatch, ts_to_qp):
+    main.predict(ts_to_qp)
+
+
+def test_rmr_flow(monkeypatch, ts_to_qp, qp_prediction):
     """
     this flow mocks out the xapps on both sides of QP.
     It first stands up a mock ts, then it starts up a mock qp-driver
@@ -68,25 +72,20 @@ def test_rmr_flow(monkeypatch, qpd_to_qp, qp_prediction):
 
     time.sleep(1)
 
-    # define a mock qp driver xapp that sends a message to QP under test
-    def mock_qpd_entry(self):
+    # define a mock qp xapp that listens on 4560
+    def mock_qp_entry(self):
 
         # good traffic steering request
-        val = json.dumps(qpd_to_qp).encode()
-        self.rmr_send(val, 30001)
+        val = json.dumps(ts_to_qp).encode()
+        self.rmr_send(val, 30000)
 
         # should trigger the default handler and do nothing
         val = json.dumps({"test send 60001": 2}).encode()
         self.rmr_send(val, 60001)
 
-    global mock_qpd_xapp
-    mock_qpd_xapp = Xapp(entrypoint=mock_qpd_entry, rmr_port=4666, use_fake_sdl=True)
-    mock_qpd_xapp.run()  # this will return since entry isn't a loop
-
-    time.sleep(1)
-
-    assert main.get_stats() == {"PredictRequests": 1}
-    assert expected_result == qp_prediction
+    global mock_qp_xapp
+    mock_qp_xapp = Xapp(entrypoint=mock_qp_entry, rmr_port=4560, use_fake_sdl=True)
+    mock_qp_xapp.run()  # this will return since entry isn't a loop
 
 
 def teardown_module():
@@ -99,6 +98,6 @@ def teardown_module():
     with suppress(Exception):
         mock_ts_xapp.stop()
     with suppress(Exception):
-        mock_qpd_xapp.stop()
+        mock_qp_xapp.stop()
     with suppress(Exception):
         main.stop()

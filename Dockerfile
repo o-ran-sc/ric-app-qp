@@ -13,8 +13,8 @@
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
 # ==================================================================================
-FROM python:3.8-alpine
-
+FROM frolvlad/alpine-miniconda3
+#FROM python:3.7-alpine
 # RMR setup
 RUN mkdir -p /opt/route/
 # copy rmr files from builder image in lieu of an Alpine package
@@ -25,15 +25,16 @@ ENV LD_LIBRARY_PATH /usr/local/lib/:/usr/local/lib64
 COPY tests/fixtures/local.rt /opt/route/local.rt
 ENV RMR_SEED_RT /opt/route/local.rt
 
+
 # sdl needs gcc
 RUN apk update && apk add gcc musl-dev
 
 # Install
 COPY setup.py /tmp
 COPY LICENSE.txt /tmp/
-COPY qp/ /tmp/qp
+COPY qp/ /qp
 RUN pip install /tmp
 
 # Run
 ENV PYTHONUNBUFFERED 1
-CMD run-qp.py
+CMD PYTHONPATH=/qp:/usr/lib/python3.7/site-packages/:$PYTHONPATH run-qp.py

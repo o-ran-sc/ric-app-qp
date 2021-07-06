@@ -34,15 +34,15 @@ repositories:
     - ric-app/qp
 committers:
     - <<: *oran_ric_app_qp_ptl
-    - name: 'Chandrasekaran Ramachandran'
-      email: 'chandrasekaran-r@hcl.com'
-      company: 'HCL'
-      id: 'Chandru'
-      timezone: 'Unknown/Unknown'
     - name: 'Deepanshu Karnwal'
       email: 'deepanshu.k@hcl.com'
       company: 'HCL'
       id: 'deepanshuk'
+      timezone: 'Unknown/Unknown'
+    - name: 'Chandrasekaran Ramachandran'
+      email: 'chandrasekaran-r@hcl.com'
+      company: 'HCL'
+      id: 'Chandru'
       timezone: 'Unknown/Unknown'
     - name: 'Guy Jacobson'
       email: 'gj2418@att.com'

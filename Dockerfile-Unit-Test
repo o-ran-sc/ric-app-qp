@@ -13,7 +13,8 @@
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
 # ==================================================================================
-FROM python:3.8-alpine
+FROM frolvlad/alpine-miniconda3
+#FROM python:3.8-alpine
 
 # sdl uses hiredis which needs gcc
 RUN apk update && apk add gcc musl-dev
@@ -24,6 +25,14 @@ COPY --from=nexus3.o-ran-sc.org:10002/o-ran-sc/bldr-alpine3-rmr:4.0.5 /usr/local
 # Upgrade pip, install tox
 RUN pip install --upgrade pip && pip install tox
 
+# Install dependencies
+RUN conda install joblib
+RUN conda update -n base -c defaults conda
+RUN conda install pandas
+RUN pip install schedule
+RUN pip install influxdb
+RUN conda install -c conda-forge statsmodels
+
 # copies
 COPY setup.py tox.ini LICENSE.txt /tmp/
 COPY qp/ /tmp/qp
@@ -32,4 +41,4 @@ RUN pip install /tmp
 
 # Run the unit tests
 WORKDIR /tmp
-RUN tox -e code,flake8
+RUN PYTHONPATH=/tmp/qp:/usr/lib/python3.7/site-packages/:$PYTHONPATH tox -e code,flake8
