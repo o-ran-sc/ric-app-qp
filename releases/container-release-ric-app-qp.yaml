@@ -7,4 +7,4 @@ project: ric-app/qp
 ref: ced4e852cebdedf60873b7c1bb4c1201d5909d00
 containers:
     - name: ric-app-qp
-      version: 0.0.1
+      version: 0.0.4
