@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2317787f_70806938",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000079
+      },
+      "writtenOn": "2021-07-22T22:13:51Z",
+      "side": 1,
+      "message": "This is not a revert of the previous commit, and should not have been labeled as such. It is a fix, but not a revert (a revert would be putting it back to the state it was in before the previous commit).",
+      "revId": "20027099e83f6ef80ef55c96fb775ca940031edc",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    }
+  ]
+}
