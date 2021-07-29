@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e2271b6_752a0b95",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000971
+      },
+      "writtenOn": "2021-07-29T09:30:50Z",
+      "side": 1,
+      "message": "Fixed tag and version related issue. Kindly merge for this release job.\n\nThanks",
+      "revId": "0b9e340cd4f951d66e029c5f80af281cc2b732d4",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    }
+  ]
+}
