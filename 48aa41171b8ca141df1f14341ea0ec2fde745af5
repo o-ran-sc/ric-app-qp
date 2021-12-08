@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae8d08f6_aed5955d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000971
+      },
+      "writtenOn": "2021-12-08T10:37:03Z",
+      "side": 1,
+      "message": "updated prediction messages (from QP to TS) with serving cell predictions.\n\nkindly review and merge!",
+      "revId": "48aa41171b8ca141df1f14341ea0ec2fde745af5",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    }
+  ]
+}
