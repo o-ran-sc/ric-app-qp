@@ -19,6 +19,10 @@ from statsmodels.tsa.stattools import adfuller
 import joblib
 
 
+class DataNotMatchError(Exception):
+    pass
+
+
 class PROCESS(object):
 
     def __init__(self, data):
@@ -61,17 +65,22 @@ class PROCESS(object):
         """ Filter throughput parameters, call make_stationary() to check for Stationarity time series
         """
         df = self.data.copy()
-        df = df[['pdcpBytesDl', 'pdcpBytesUl']]
+        try:
+            df = df[['pdcpBytesDl', 'pdcpBytesUl']]
+        except DataNotMatchError:
+            print('Parameters pdcpBytesDl, pdcpBytesUl does not exist in provided data')
+            self.data = None
         self.data = df.loc[:, (df != 0).any(axis=0)]
         self.make_stationary()  # check for Stationarity and make the Time Series Stationary
 
     def valid(self):
-        df = self.data.copy()
-        df = df.loc[:, (df != 0).any(axis=0)]
-        if len(df) != 0 and df.shape[1] == 2:
-            return True
-        else:
-            return False
+        val = False
+        if self.data is not None:
+            df = self.data.copy()
+            df = df.loc[:, (df != 0).any(axis=0)]
+            if len(df) != 0 and df.shape[1] == 2:
+                val = True
+        return val
 
 
 def train(db, cid):

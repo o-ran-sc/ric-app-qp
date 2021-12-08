@@ -74,15 +74,16 @@ def qp_predict_handler(self, summary, sbuf):
         logger.warning("predict handler: failed to send message")
 
 
-def nbcells(ue):
+def cells(ue):
     """
         Extract neighbor cell id for a given UE
     """
     db.read_data(meas='liveUE', limit=1, ueid=ue)
     df = db.data
 
-    nbc = df.filter(regex='nbCell').values[0]
-    return nbc
+    nbc = df.filter(regex='nbCell').values[0].tolist()
+    srvc = df.filter(regex='nrCell').values[0].tolist()
+    return srvc+nbc
 
 
 def predict(payload):
@@ -93,8 +94,8 @@ def predict(payload):
     payload = json.loads(payload)
     ueid = payload['UEPredictionSet'][0]
 
-    nbc = nbcells(ueid)
-    for cid in nbc:
+    cell_list = cells(ueid)
+    for cid in cell_list:
         mcid = cid.replace('/', '')
         db.read_data(meas='liveCell', cellid=cid, limit=11)
         if len(db.data) != 0:
