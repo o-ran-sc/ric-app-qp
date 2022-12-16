@@ -1,13 +1,13 @@
 {
         "xapp_name": "qp",
-        "version": "0.0.4",
+        "version": "0.0.5",
         "containers": [
             {
                 "name": "qp",
                 "image": {
                     "registry": "nexus3.o-ran-sc.org:10002",
                     "name": "o-ran-sc/ric-app-qp",
-                    "tag": "0.0.4"
+                    "tag": "0.0.5"
                 }
             }
         ],

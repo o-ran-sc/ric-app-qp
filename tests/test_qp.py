@@ -1,4 +1,5 @@
 # ==================================================================================
+#       Copyright (c) 2020 HCL Technologies Limited.
 #       Copyright (c) 2020 AT&T Intellectual Property.
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +17,7 @@
 import json
 import time
 from contextlib import suppress
-from qp import main
+from src import main
 from ricxappframe.xapp_frame import Xapp, RMRXapp
 
 mock_qp_xapp = None
@@ -37,10 +38,18 @@ def test_init_xapp(monkeypatch):
         self.predict_requests = 0
 
     # patch
-    monkeypatch.setattr("qp.main.post_init", fake_post_init)
+    monkeypatch.setattr("src.main.post_init", fake_post_init)
 
     # start qp
     main.start(thread=True)
+
+
+def test_database_connection(monkeypatch):
+    main.connectdb(thread=True)
+
+
+def test_training(monkeypatch, qp_train):
+    main.train_model(qp_train)
 
 
 def test_predict(monkeypatch, ts_to_qp):

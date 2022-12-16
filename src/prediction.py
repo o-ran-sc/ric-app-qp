@@ -24,22 +24,17 @@ def forecast(data, cid, nobs=1):
     """
      forecast the time series using the saved model.
     """
-    data = data[['pdcpBytesUl', 'pdcpBytesDl']]
     ps = PROCESS(data.copy())
-    ps.make_stationary()
+    if ps.data is None:
+        return
+    data = ps.data
+    pred = data.tail(1).values
+    if os.path.isfile('src/'+cid) and not ps.constant():
+        model = joblib.load('src/'+cid)
+        pred = model.forecast(y=data.values, steps=nobs)
 
-    if not ps.valid():
-        df_f = data.tail(1)
-    elif os.path.isfile('qp/'+cid):
-        model = joblib.load('qp/'+cid)
-        pred = model.forecast(y=ps.data.values, steps=nobs)
-
-        if pred is not None:
-            df_f = pd.DataFrame(pred, columns=data.columns)
-            df_f.index = pd.date_range(start=data.index[-1], freq='10ms', periods=len(df_f))
-            df_f = df_f[data.columns].astype(int)
-            df_f = ps.invert_transformation(data, df_f)
-    else:
-        return None
-    df_f = df_f[data.columns].astype(int)
+    df_f = pd.DataFrame(pred, columns=data.columns)
+    df_f.index = pd.date_range(start=data.index[-1], freq='10ms', periods=len(df_f))
+    df_f = df_f[data.columns].fillna(0).astype(int)
+    df_f = ps.invert_transformation(data, df_f)
     return df_f
