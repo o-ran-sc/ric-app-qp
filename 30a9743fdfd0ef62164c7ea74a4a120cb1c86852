@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfe94000_ab2e1674",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000971
+      },
+      "writtenOn": "2022-12-16T16:18:04Z",
+      "side": 1,
+      "message": "Release 0.0.5 Please find more details on changes submitted here -\u003e https://jira.o-ran-sc.org/browse/RICAPP-207\n\nKindly review and merge",
+      "revId": "30a9743fdfd0ef62164c7ea74a4a120cb1c86852",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    }
+  ]
+}
