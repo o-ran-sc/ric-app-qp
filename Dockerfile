@@ -1,5 +1,6 @@
 # ==================================================================================
-#       Copyright (c) 2020 AT&T Intellectual Property.
+#   Copyright (c) 2020 HCL Technologies Limited.    
+#   Copyright (c) 2020 AT&T Intellectual Property.
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");
 #   you may not use this file except in compliance with the License.
@@ -13,7 +14,7 @@
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
 # ==================================================================================
-FROM frolvlad/alpine-miniconda3
+FROM frolvlad/alpine-miniconda3:python3.7
 #FROM python:3.7-alpine
 # RMR setup
 RUN mkdir -p /opt/route/
@@ -25,16 +26,14 @@ ENV LD_LIBRARY_PATH /usr/local/lib/:/usr/local/lib64
 COPY tests/fixtures/local.rt /opt/route/local.rt
 ENV RMR_SEED_RT /opt/route/local.rt
 
-
 # sdl needs gcc
 RUN apk update && apk add gcc musl-dev
-
 # Install
 COPY setup.py /tmp
 COPY LICENSE.txt /tmp/
-COPY qp/ /qp
 RUN pip install /tmp
-
+RUN pip install --force-reinstall redis==3.0.1
+COPY src/ /src
 # Run
 ENV PYTHONUNBUFFERED 1
-CMD PYTHONPATH=/qp:/usr/lib/python3.7/site-packages/:$PYTHONPATH run-qp.py
+CMD PYTHONPATH=/src:/usr/lib/python3.7/site-packages/:$PYTHONPATH run-qp.py

@@ -27,3 +27,8 @@ def qp_prediction():
 @pytest.fixture
 def ts_to_qp():
     return '{"UEPredictionSet": ["Car-1"]}'
+
+
+@pytest.fixture
+def qp_train():
+    return "c6/B2"
