@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6eb62b4a_49dd8636",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000971
+      },
+      "writtenOn": "2022-12-19T08:15:11Z",
+      "side": 1,
+      "message": "Pushed version 0.0.5\n\nkindly review and merge",
+      "revId": "115776714ad12cbfa29ffce6b11d3908e29e6617",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    }
+  ]
+}
