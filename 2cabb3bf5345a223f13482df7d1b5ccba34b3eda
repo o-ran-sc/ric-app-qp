@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8575829b_fad341f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000971
+      },
+      "writtenOn": "2022-12-19T14:59:52Z",
+      "side": 1,
+      "message": "Updated Committer Information in QP xApp [RICAPP-206]\nAdded Amit Srivastava (HCL) and Sandeep Kumar (HCL) as committers and removed Chandrasekaran Ramachandran (HCL)\n\nKindly review and merge.",
+      "revId": "2cabb3bf5345a223f13482df7d1b5ccba34b3eda",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    }
+  ]
+}
