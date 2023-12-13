@@ -21,7 +21,7 @@ setup(
     packages=find_packages(exclude=["tests.*", "tests"]),
     description="Quality-of-Service Predictor Xapp for Traffic Steering",
     url="https://gerrit.o-ran-sc.org/r/admin/repos/ric-app/qp",
-    install_requires=["ricxappframe>=1.1.1,<2.0.0", "joblib>=0.3.2", "statsmodels>=0.11.1", "mdclogpy<=1.1.1", "influxdb", "pandas>=1.1.3", "scikit-learn", "schedule", "joblib"],
+    install_requires=["ricxappframe==3.2.2", "joblib>=0.3.2", "statsmodels>=0.11.1", "mdclogpy<=1.1.1", "influxdb", "pandas==1.5.3", "scikit-learn", "schedule", "joblib"],
     entry_points={"console_scripts": ["run-qp.py=src.main:start"]},  # adds a magical entrypoint for Docker
     license="Apache 2.0",
     data_files=[("", ["LICENSE.txt"])],
