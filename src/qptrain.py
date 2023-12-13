@@ -20,6 +20,7 @@ from mdclogpy import Logger
 from exceptions import DataNotMatchError
 from sklearn.metrics import mean_squared_error
 from math import sqrt
+import pandas as pd
 import joblib
 import warnings
 warnings.filterwarnings("ignore")
@@ -80,10 +81,14 @@ class PROCESS(object):
     def constant(self):
         val = True
         df = self.data.copy()
-        df = df.drop_duplicates().dropna()
-        df = df.loc[:, (df != 0).any(axis=0)]
-        if len(df) >= 10:
-            val = False
+        df = df[db.thptparam]
+        df = df.drop_duplicates()
+        df = df.loc[:, df.apply(pd.Series.nunique) != 1]
+        if df is not None:
+            df = df.dropna()
+            df = df.loc[:, (df != 0).any(axis=0)]
+            if len(df) >= 10:
+                val = False
         return val
 
     def evaluate_var(self, X, lag):

@@ -11,6 +11,11 @@ All notable changes to this project will be documented in this file.
 The format is based on `Keep a Changelog <http://keepachangelog.com/>`__
 and this project adheres to `Semantic Versioning <http://semver.org/>`__.
 
+[0.0.6] - 2022-12-15
+--------------------
+* Support for python 3.11 and RMR version 4.9.0 (`RICAPP-230 <https://jira.o-ran-sc.org/browse/RICAPP-230>`_)
+
+
 [0.0.5] - 2022-12-15
 --------------------
 * Database logic modification and improvements (`RICAPP-207 <https://jira.o-ran-sc.org/browse/RICAPP-207>`_)

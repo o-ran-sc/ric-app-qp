@@ -57,7 +57,7 @@ def populatedb():
     # inintiate connection and create database UEDATA
     db = INSERTDATA()
     df = pd.read_csv('src/cells.csv')
-    print("Writin data into influxDB")
+    print("Writinig data into influxDB")
     while True:
         db.assign_timestamp(df)
 
