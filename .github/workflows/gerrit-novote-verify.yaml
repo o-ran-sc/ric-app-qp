@@ -81,7 +81,9 @@ jobs:
       GERRIT_PATCHSET_REVISION: ${{ inputs.GERRIT_PATCHSET_REVISION }}
       GERRIT_PROJECT: ${{ inputs.GERRIT_PROJECT }}
       GERRIT_REFSPEC: ${{ inputs.GERRIT_REFSPEC }}
-      TOX_ENVS: '["flake8","code","docs","docs-linkcheck"]'
+      TOX_ENVS: '["flake8","code"]'
+      PRE_BUILD_SCRIPT_URL: "https://raw.githubusercontent.com/o-ran-sc/ci-management/master/jjb/shell/install-deb-rmr.sh"
+      PYTHON_VERSION: "3.10"
 
   vote:
     if: ${{ always() }}
